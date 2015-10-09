@@ -1,0 +1,10 @@
+---
+
+vagrant_systemd_journal_group: systemd-journal
+
+vagrant_packages:
+  - systemd-journal-gateway
+
+vagrant_services:
+  - systemd-journal-gatewayd.service
+  - systemd-journal-gatewayd.service

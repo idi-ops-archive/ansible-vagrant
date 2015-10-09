@@ -1,0 +1,8 @@
+---
+- name: restart systemd-journal-gatewayd
+  service:
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+    - systemd-journal-gatewayd.service
+    - systemd-journal-gatewayd.socket
