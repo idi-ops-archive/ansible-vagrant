@@ -1,0 +1,41 @@
+---
+
+- name: Configure timezone
+  file:
+    src: "/usr/share/zoneinfo/{{ vagrant_timezone }}"
+    dest: /etc/localtime
+    state: link
+
+- name: Install packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: vagrant_packages
+
+- name: Enable systemd services
+  service:
+    name: "{{ item }}"
+    enabled: yes
+  with_items: vagrant_services
+
+- name: Configure system-journal-gateway user
+  user:
+    name: systemd-journal-gateway
+    groups: "{{ vagrant_systemd_journal_group }}"
+    append: yes
+    createhome: no
+  notify: restart systemd-journal-gatewayd
+
+- name: Configure systemd journal permissions permanently (tmpfiles.d)
+  copy:
+    src: system-journal.conf
+    dest: /etc/tmpfiles.d/system-journal.conf
+    backup: no
+    owner: root
+  notify: restart systemd-journal-gatewayd
+
+- name: Start services
+  service:
+    name: "{{ item }}"
+    state: started
+  with_items: vagrant_services

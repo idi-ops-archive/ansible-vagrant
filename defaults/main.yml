@@ -1,0 +1,5 @@
+---
+
+vagrant_timezone: UTC
+
+vagrant_systemd_journal_group: systemd-journal
