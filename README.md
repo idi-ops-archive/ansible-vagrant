@@ -6,6 +6,9 @@ Customizations for Vagrant development boxes.
 Role Variables
 --------------
 
+vagrant_timezone
+vagrant_systemd_journal_group
+
 Example Playbook
 ----------------
 

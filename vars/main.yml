@@ -1,7 +1,5 @@
 ---
 
-vagrant_systemd_journal_group: systemd-journal
-
 vagrant_packages:
   - systemd-journal-gateway
 
