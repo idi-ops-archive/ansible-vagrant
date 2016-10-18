@@ -9,6 +9,13 @@ Role Variables
  * vagrant_timezone
  * vagrant_systemd_journal_group
 
+Requirements
+------------
+
+The following roles are required:
+
+*  [facts](https://github.com/idi-ops/ansible-facts/)
+
 Example Playbook
 ----------------
 
