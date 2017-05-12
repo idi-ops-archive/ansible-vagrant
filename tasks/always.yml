@@ -4,8 +4,9 @@
   sysctl:
     name: net.ipv4.ip_forward
     value: 1
-    sysctl_set: yes
     state: present
+    sysctl_set: yes
+    sysctl_file: /etc/sysctl.conf
 
 - name: Configure timezone
   file:
