@@ -1,5 +1,12 @@
 ---
 
+- name: Configure IP forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    sysctl_set: yes
+    state: present
+
 - name: Configure timezone
   file:
     src: "/usr/share/zoneinfo/{{ vagrant_timezone }}"
